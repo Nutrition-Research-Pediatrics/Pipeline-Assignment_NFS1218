@@ -13,22 +13,22 @@ for (pkg in packages) {
 }
 ```
 
-# 2  Data loading 
+## 2  Data loading 
 
 ```
 data <- read_csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/mock_precision_growth_dataset(updated).csv")
 ```
 
-# Inspect structure
+## Inspect structure
 
 ```
 glimpse(data)
 summary(data)
 ```
 
-# 3  Missingness exploration 
+## 3  Missingness exploration 
 
-# 3.1 Percent missing per variable
+## 3.1 Percent missing per variable
 
 ```
 missing_summary <- data %>%
@@ -42,7 +42,7 @@ missing_summary <- data %>%
 print(missing_summary)
 ```
 
-# 3.2 Visual inspection of missing data
+## 3.2 Visual inspection of missing data
 
 ```
 vis_miss(data)
@@ -53,9 +53,9 @@ gg_miss_upset(data)
 
 ###Add the Visual Table from Queenie, all the variables were missing at random, variables of interest for our research question were not missing###
 
-# 4  Distribution inspection 
+## 4  Distribution inspection 
 
-# 4.1 zBMI distribution
+## 4.1 zBMI distribution
 
 ```
 if ("WHO_zBMI_birth" %in% names(data)) {
@@ -69,7 +69,7 @@ if ("WHO_zBMI_birth" %in% names(data)) {
 
 ### WHO_zBMI_birth was normally distributed and this histrogram points out any potential outliers that we will investigate in the next step###
 
-# 4.2 maternal BMI distribution
+## 4.2 maternal BMI distribution
 
 ```
 if ("Maternal_BMI" %in% names(data)) {
@@ -83,7 +83,7 @@ if ("Maternal_BMI" %in% names(data)) {
 
 ### Maternal_BMI was normally distributed and this histogram points out any potential outliers that we will investigate in the next step###
 
-# 4.3 Maternal Fasting glucose distribution
+## 4.3 Maternal Fasting glucose distribution
 
 ```
 if ("Fasting_glucose" %in% names(data)) {
@@ -97,9 +97,9 @@ if ("Fasting_glucose" %in% names(data)) {
 
 ###Fasting_glucose was normally distributed and this histogram points out any potential outliers that we will investigate in the next step###
 
-# 5  Identifying implausible values 
+## 5  Identifying implausible values 
 
-# 5.1 Implausible gestational age values
+## 5.1 Implausible gestational age values
 
 ```
 if ("Gestational_age_weeks" %in% names(data)) {
@@ -113,7 +113,7 @@ if ("Gestational_age_weeks" %in% names(data)) {
 
 ### Cut-offs were selected based off of criteria and the results indicated 1 participant as an outlier/implausible value (participant ID 96 with a gestational age of 44.8)###
 
-# 5.2 Implausible maternal BMI values
+## 5.2 Implausible maternal BMI values
 
 ```
 if ("Maternal_BMI" %in% names(data)) {
@@ -127,7 +127,7 @@ if ("Maternal_BMI" %in% names(data)) {
 
 ###cut-offs were selected based off of criteria and the results indicated 6 participants as an outlier/implausible value (participant ID 58 = 14.5 kg/m^2; participant ID 65 = 41.4 kg/m^2; participant ID 131 = 13.6 kg/m^2; participant ID 162 = 14.9 kg/m^2; participant ID 233 = 12.5 kg/m^2; participant ID 255 = 12.7 kg/m^2###
 
-# 5.3 Implausible maternal fasting glucose values
+## 5.3 Implausible maternal fasting glucose values
 
 ```
 if ("Fasting_glucose" %in% names(data)) {
@@ -157,7 +157,7 @@ if ("WHO_zBMI_birth" %in% names(data)) {
 
 ###cut-offs were selected based off of criteria and the results indicated 12 participants as an outlier/implausible value (participnat ID 2 = -6.4; participant ID 13 = -5.59; participnat ID 33 = -5.2; participant ID 42 = -5.4; participant ID 112 = -5.6; participant ID 140 = +5.3; participant ID 142 = -5,4; participant ID 200 = -5.1; participant ID 226 = -6.1; participant ID 249 = -6.5; participant ID 278 = -6.5; participant ID 298 = -6.1###
 
-# 6  Data cleaning 
+## 6  Data cleaning 
 
 ```
 clean_data <- data
@@ -171,7 +171,7 @@ if ("Gestational_age_weeks" %in% names(clean_data)) {
 
 ###from this a total of 1 participant was removed from the dataset, new sample size is N=299 ###
 
-# 6.2 Remove implausible maternal BMI
+## 6.2 Remove implausible maternal BMI
 
 ```
 if ("Maternal_BMI" %in% names(clean_data)) {
@@ -182,7 +182,7 @@ if ("Maternal_BMI" %in% names(clean_data)) {
 
 ###from this a total of 6 participants were removed from the dataset, new sample size is N=293###
 
-# 6.3 Remove implausible zBMI at birth
+## 6.3 Remove implausible zBMI at birth
 
 ```
 if ("WHO_zBMI_birth" %in% names(clean_data)) {
@@ -194,16 +194,16 @@ if ("WHO_zBMI_birth" %in% names(clean_data)) {
 ###from this a total of 12 participants were removed from the dataset, new sample size is N=281###
 ###since in section 5.3 there were no potential outliers/implausible values for Fasting_glucose we did not have to remove any implausible values, therefore the cleaned dataset sample size is N = 281####
 
-# 7  Post-cleaning diagnostics  
+## 7  Post-cleaning diagnostics  
 
-# Compare sample size
+## Compare sample size
 
 ```
 cat("Original N:", nrow(data), "\n")
 cat("Cleaned N:", nrow(clean_data), "\n")
 ```
 
-# Recalculate missingness after cleaning
+## Recalculate missingness after cleaning
 
 ```
 missing_summary_clean <- clean_data %>%
@@ -217,15 +217,15 @@ missing_summary_clean <- clean_data %>%
 print(missing_summary_clean)
 ```
 
-# Save cleaned dataset
+## Save cleaned dataset
 
 ```
 write_csv(clean_data, "clean_precision_growth_dataset_03.22.csv")
 ```
 
-## Part 2 Assessing Clustering Tendency
+# Part 2 Assessing Clustering Tendency
 
-# 1. Install and load required packages
+## 1. Install and load required packages
 
 ```
 packages <- c("NbClust", "factoextra", "ggplot2", "gridExtra", "cluster", 
@@ -239,19 +239,29 @@ for (pkg in packages) {
 }
 ```
 
-# 2. Reading Data
+## 2. Reading Data
+
+```
 data_clean <- read_csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/clean_precision_growth_dataset_03.22_2variables.csv")
+```
+
 ###this dataset contains the cleaned variables specific variables for our clustering analysis, in the dataset there is a total of 3 variables consisting of Participant ID, Maternal BMI, and Fasting Blood Glucose###
 
-#2.1 Renamed the dataset
+## 2.1 Renamed the dataset
+
+```
 data_mBMI_glucose <- data_clean
+```
 
-# 3. Scale the data
+## 3. Scale the data
+
+```
 data_scaled <- scale(data_mBMI_glucose)
+```
 
+## 3. NBClust analysis to determine optimal number of clusters
 
-# 3. NBClust analysis to determine optimal number of clusters
-
+```
 nbclust_result <- NbClust(data_scaled,
                           distance = "euclidean",
                           min.nc = 2,
@@ -259,13 +269,18 @@ nbclust_result <- NbClust(data_scaled,
                           method = "kmeans",
                           index ="all"
 )
+```
 
-# 3.1 Extract optimal k
+## 3.1 Extract optimal k
+
+```
 optimal_k <- as.numeric(names(which.max(table(nbclust_result$Best.nc[1,]))))
 cat(sprintf("\nOptimal number of clusters: %d\n", optimal_k))
+```
 
 # 3.2 PLOT 1: VOTING RESULTS
 
+```
 votes <- table(nbclust_result$Best.nc[1,])
 vote_df <- as.data.frame(votes)
 names(vote_df) <- c("k", "Votes")
@@ -332,9 +347,11 @@ plot2 <- ggplot(elbow_df, aes(x = k, y = WSS)) +
     plot.margin = margin(20, 20, 20, 20)
   )
 plot2
+```
 
 # 3.4 PLOT 3: SILHOUETTE ANALYSIS
 
+```
 install.packages("cluster")
 
 library(cluster)
@@ -554,9 +571,12 @@ cat("  8. nbclust_summary.txt - This summary\n\n")
 cat("=" %>% rep(80) %>% paste(collapse = ""), "\n")
 
 sink()
+```
 
+## Define helper for pipe
 
-# Define helper for pipe
+```
 `%>%` <- function(x, f) f(x)
+```
 
 
