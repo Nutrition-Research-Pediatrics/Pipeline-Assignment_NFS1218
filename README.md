@@ -223,7 +223,7 @@ print(missing_summary_clean)
 write_csv(clean_data, "clean_precision_growth_dataset_03.22.csv")
 ```
 
-##Part 2 Assessing Clustering Tendency
+## Part 2 Assessing Clustering Tendency
 
 # 1. Install and load required packages
 
