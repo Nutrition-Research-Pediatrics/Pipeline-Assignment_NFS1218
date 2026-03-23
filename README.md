@@ -53,11 +53,11 @@ gg_miss_upset(data)
 ```
 ![Missingness](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/68117ba717fc3bcad035e45062531f2866f1b524/Graphs/Missingness_03.22.png)
 
-Add the Visual Table from Queenie, all the variables were missing at random, variables of interest for our research question were not missing
+All the variables were missing at random, variables of interest for our research question were not missing
 
 ## 4  Distribution inspection 
 
-## 4.1 zBMI distribution
+## 4.1 zBMI distribution at birth
 
 ```
 if ("WHO_zBMI_birth" %in% names(data)) {
@@ -68,7 +68,7 @@ if ("WHO_zBMI_birth" %in% names(data)) {
     labs(title = "Distribution of zBMI at birth")
 }
 ```
-
+![zBMI Distribution](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/e7f8f1234c97dac41d90579d1e8080e9d502780d/Graphs/zBMI%20at%20birth_Distribution_03.22.png)
 WHO_zBMI_birth was normally distributed and this histrogram points out any potential outliers that we will investigate in the next step
 
 ## 4.2 Maternal BMI distribution
@@ -82,7 +82,7 @@ if ("Maternal_BMI" %in% names(data)) {
     labs(title = "Distribution of maternal BMI")
 }
 ```
-
+![Maternal BMI Distribution](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/e7f8f1234c97dac41d90579d1e8080e9d502780d/Graphs/Maternal%20BMI_Distribution_03.22.png)
 Maternal_BMI was normally distributed and this histogram points out any potential outliers that we will investigate in the next step
 
 ## 4.3 Maternal Fasting glucose distribution
@@ -96,7 +96,7 @@ if ("Fasting_glucose" %in% names(data)) {
     labs(title = "Distribution of maternal fasting glucose")
 }
 ```
-
+![Maternal Fasting Glucose Distribution](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/e7f8f1234c97dac41d90579d1e8080e9d502780d/Graphs/Fasting%20glucose_Distribution_03.22.png)
 Fasting_glucose was normally distributed and this histogram points out any potential outliers that we will investigate in the next step
 
 ## 5  Identifying implausible values 
