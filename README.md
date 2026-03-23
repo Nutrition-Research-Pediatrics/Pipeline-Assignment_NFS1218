@@ -142,7 +142,7 @@ if ("Fasting_glucose" %in% names(data)) {
 
 cut-offs were selected based off of criteria and the results indicated zero potential participants as outliers/implausible values
 
-# 5.4 WHO-style plausibility cut-offs for zBMI at birth
+## 5.4 WHO-style plausibility cut-offs for zBMI at birth
 
 WHO commonly flags z-scores < -5 or > +5 as implausible
 
@@ -198,14 +198,14 @@ since in section 5.3 there were no potential outliers/implausible values for Fas
 
 ## 7  Post-cleaning diagnostics  
 
-## Compare sample size
+## 7.1 Compare sample size
 
 ```
 cat("Original N:", nrow(data), "\n")
 cat("Cleaned N:", nrow(clean_data), "\n")
 ```
 
-## Recalculate missingness after cleaning
+## 7.2 Recalculate missingness after cleaning
 
 ```
 missing_summary_clean <- clean_data %>%
@@ -219,7 +219,7 @@ missing_summary_clean <- clean_data %>%
 print(missing_summary_clean)
 ```
 
-## Save cleaned dataset
+## 7.3 Save cleaned dataset
 
 ```
 write_csv(clean_data, "clean_precision_growth_dataset_03.22.csv")
@@ -351,7 +351,7 @@ plot2 <- ggplot(elbow_df, aes(x = k, y = WSS)) +
 plot2
 ```
 
-# 3.4 PLOT 3: SILHOUETTE ANALYSIS
+## 3.4 PLOT 3: SILHOUETTE ANALYSIS
 
 ```
 install.packages("cluster")
