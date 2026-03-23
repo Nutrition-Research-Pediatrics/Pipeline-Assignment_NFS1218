@@ -70,7 +70,7 @@ if ("WHO_zBMI_birth" %in% names(data)) {
 
 WHO_zBMI_birth was normally distributed and this histrogram points out any potential outliers that we will investigate in the next step
 
-## 4.2 maternal BMI distribution
+## 4.2 Maternal BMI distribution
 
 ```
 if ("Maternal_BMI" %in% names(data)) {
