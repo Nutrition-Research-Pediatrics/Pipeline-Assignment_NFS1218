@@ -3,6 +3,7 @@ Group project: Building an A-Z Reproducible Pipeline for Precision Nutrition Ana
 
 # Part 1: Exploring Missingness & Data Cleaning for Growth Dataset in R 
 
+```
 packages <- c("tidyverse", "naniar", "skimr", "ggplot2")
 for (pkg in packages) {
   if (!require(pkg, character.only = TRUE)) {
@@ -10,10 +11,13 @@ for (pkg in packages) {
     library(pkg, character.only = TRUE)
   }
 }
+```
 
 # 2  Data loading 
 
+```
 data <- read_csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/mock_precision_growth_dataset(updated).csv")
+```
 
 # Inspect structure
 glimpse(data)
