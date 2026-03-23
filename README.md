@@ -193,7 +193,8 @@ if ("WHO_zBMI_birth" %in% names(clean_data)) {
 ```
 
 from this a total of 12 participants were removed from the dataset, new sample size is N=281
-###since in section 5.3 there were no potential outliers/implausible values for Fasting_glucose we did not have to remove any implausible values, therefore the cleaned dataset sample size is N = 281
+
+since in section 5.3 there were no potential outliers/implausible values for Fasting_glucose we did not have to remove any implausible values, therefore the cleaned dataset sample size is N = 281
 
 ## 7  Post-cleaning diagnostics  
 
