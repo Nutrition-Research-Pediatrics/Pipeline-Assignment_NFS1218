@@ -51,7 +51,7 @@ vis_miss(data)
 # Missingness combinations
 gg_miss_upset(data)
 ```
-![alt text]([https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/68117ba717fc3bcad035e45062531f2866f1b524/Graphs/Missingness_03.22.png))
+![Missingness](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/68117ba717fc3bcad035e45062531f2866f1b524/Graphs/Missingness_03.22.png)
 
 Add the Visual Table from Queenie, all the variables were missing at random, variables of interest for our research question were not missing
 
