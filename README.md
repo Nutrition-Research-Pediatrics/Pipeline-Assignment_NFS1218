@@ -1,10 +1,8 @@
 # Pipeline-Assignment_NFS1218
 Group project: Building an A-Z Reproducible Pipeline for Precision Nutrition Analysis
+
 # Exploring Missingness & Data Cleaning for Growth Dataset.R
-
-Preprocessing
 packages <- c("tidyverse", "naniar", "skimr", "ggplot2")
-
 for (pkg in packages) {
   if (!require(pkg, character.only = TRUE)) {
     install.packages(pkg)
@@ -12,15 +10,14 @@ for (pkg in packages) {
   }
 }
 
-# =    2  Data loading  =========================================================
-
+# 2  Data loading 
 data <- read_csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/mock_precision_growth_dataset(updated).csv")
 
 # Inspect structure
 glimpse(data)
 summary(data)
 
-# =====   3  Missingness exploration  ===========================================
+# 3  Missingness exploration 
 
 # 3.1 Percent missing per variable
 
