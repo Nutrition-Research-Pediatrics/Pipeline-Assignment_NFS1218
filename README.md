@@ -1,7 +1,7 @@
 # Pipeline-Assignment_NFS1218
 Group project: Building an A-Z Reproducible Pipeline for Precision Nutrition Analysis
 
-# Exploring Missingness & Data Cleaning for Growth Dataset.R
+# Part 1: Exploring Missingness & Data Cleaning for Growth Dataset in R 
 
 packages <- c("tidyverse", "naniar", "skimr", "ggplot2")
 for (pkg in packages) {
@@ -172,10 +172,9 @@ print(missing_summary_clean)
 # Save cleaned dataset
 write_csv(clean_data, "clean_precision_growth_dataset_03.22.csv")
 
+#Part 2 Assessing Clustering Tendency
 
-# Assessing Clustering Tendency
-
-# Install and load required packages
+# 1. Install and load required packages
 packages <- c("NbClust", "factoextra", "ggplot2", "gridExtra", "cluster", 
               "RColorBrewer", "reshape2")
 
@@ -186,16 +185,18 @@ for (pkg in packages) {
   }
 }
 
-# Reading Data
+# 2. Reading Data
 data_clean <- read_csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/clean_precision_growth_dataset_03.22_2variables.csv")
+###this dataset contains the cleaned variables specific variables for our clustering analysis, in the dataset there is a total of 3 variables consisting of Participant ID, Maternal BMI, and Fasting Blood Glucose###
 
+#2.1 Renamed the dataset
 data_mBMI_glucose <- data_clean
 
-# Scale the data
+# 3. Scale the data
 data_scaled <- scale(data_mBMI_glucose)
 
 
-# ===== 2. NBClust analysis to determine optimal number of clusters=============
+# 3. NBClust analysis to determine optimal number of clusters
 
 nbclust_result <- NbClust(data_scaled,
                           distance = "euclidean",
@@ -205,13 +206,11 @@ nbclust_result <- NbClust(data_scaled,
                           index ="all"
 )
 
-# Extract optimal k
+# 3.1 Extract optimal k
 optimal_k <- as.numeric(names(which.max(table(nbclust_result$Best.nc[1,]))))
 cat(sprintf("\nOptimal number of clusters: %d\n", optimal_k))
 
-# ============================================================================
-# PLOT 1: VOTING RESULTS
-# ============================================================================
+# 3.2 PLOT 1: VOTING RESULTS
 
 votes <- table(nbclust_result$Best.nc[1,])
 vote_df <- as.data.frame(votes)
@@ -238,9 +237,7 @@ plot1 <- ggplot(vote_df, aes(x = k, y = Votes, fill = k == optimal_k)) +
     panel.grid.major.y = element_line(color = "grey90", linewidth = 0.3),
     plot.margin = margin(20, 20, 20, 20)
   )
-#===========================================================================
-# PLOT 2: ELBOW METHOD
-# ============================================================================
+# 3.3 PLOT 2: ELBOW METHOD
 
 wss <- sapply(1:8, function(k) {
   if (k == 1) {
@@ -282,9 +279,8 @@ plot2 <- ggplot(elbow_df, aes(x = k, y = WSS)) +
   )
 plot2
 
-# ============================================================================
-# PLOT 3: SILHOUETTE ANALYSIS
-# ============================================================================
+# 3.4 PLOT 3: SILHOUETTE ANALYSIS
+
 install.packages("cluster")
 
 library(cluster)
@@ -323,12 +319,9 @@ ggsave("tutorial_plot3_silhouette.png", plot3, width = 11, height = 7, dpi = 300
 ggsave("tutorial_plot3_silhouette.svg", plot3, width = 11, height = 7, bg = "white")
 plot3
 
+# Silhouette Analysis: works with any distance metric, detects cluster separation,and cohesion 
 
-# Silhouette Analysis: works with any distance metric, detects cluster separation,
-# and cohesion 
-# ============================================================================
-# PLOT 4: PCA CLUSTER VISUALIZATION
-# ============================================================================
+# 3.5 PLOT 4: PCA CLUSTER VISUALIZATION
 
 pca_result <- prcomp(data_scaled)
 pca_df <- data.frame(
@@ -364,9 +357,8 @@ plot4 <- ggplot(pca_df, aes(x = PC1, y = PC2, color = Cluster, shape = Cluster))
     plot.margin = margin(20, 20, 20, 20)
   )
 plot4
-# ============================================================================
-# PLOT 5: COMPARISON OF MULTIPLE K VALUES
-# ============================================================================
+
+# 3.6 PLOT 5: COMPARISON OF MULTIPLE K VALUES
 
 k_values <- 2:6
 comparison_plots <- list()
@@ -406,9 +398,7 @@ plot5 <- grid.arrange(
 
 # Strong separation (non‑overlapping ellipses) between the three groups which supports k = 3 
 
-# ============================================================================
-# PLOT 6: INDEX HEATMAP
-# ============================================================================
+# 3.7 PLOT 6: INDEX HEATMAP
 
 # Create matrix showing which k each index voted for
 index_votes <- nbclust_result$Best.nc[1, ]
@@ -447,9 +437,9 @@ plot6 <- ggplot(index_matrix, aes(x = Optimal_k, y = reorder(Index, Index_num)))
   )
 
 plot6
-# ============================================================================
-# CREATE COMBINED FIGURE
-# ============================================================================
+
+# 3.8 CREATE COMBINED FIGURE
+
 
 combined <- grid.arrange(
   plot1, plot2, plot3, plot4,
@@ -461,9 +451,7 @@ combined <- grid.arrange(
   )
 )
 
-# ============================================================================
 # GENERATE SUMMARY REPORT
-# ============================================================================
 
 sink("nbclust_summary.txt")
 
@@ -516,3 +504,5 @@ sink()
 
 # Define helper for pipe
 `%>%` <- function(x, f) f(x)
+
+
