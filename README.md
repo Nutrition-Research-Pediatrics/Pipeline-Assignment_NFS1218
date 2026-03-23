@@ -52,7 +52,7 @@ vis_miss(data)
 gg_miss_upset(data)
 ```
 
-###Add the Visual Table from Queenie, all the variables were missing at random, variables of interest for our research question were not missing###
+#### Add the Visual Table from Queenie, all the variables were missing at random, variables of interest for our research question were not missing
 
 ## 4  Distribution inspection 
 
@@ -68,7 +68,7 @@ if ("WHO_zBMI_birth" %in% names(data)) {
 }
 ```
 
-### WHO_zBMI_birth was normally distributed and this histrogram points out any potential outliers that we will investigate in the next step###
+#### WHO_zBMI_birth was normally distributed and this histrogram points out any potential outliers that we will investigate in the next step
 
 ## 4.2 maternal BMI distribution
 
