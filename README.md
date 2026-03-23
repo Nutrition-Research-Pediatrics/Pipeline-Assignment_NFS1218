@@ -127,7 +127,7 @@ if ("Maternal_BMI" %in% names(data)) {
 }
 ```
 
-cut-offs were selected based off of criteria and the results indicated 6 participants as an outlier/implausible value (participant ID 58 = 14.5 kg/m^2; participant ID 65 = 41.4 kg/m^2; participant ID 131 = 13.6 kg/m^2; participant ID 162 = 14.9 kg/m^2; participant ID 233 = 12.5 kg/m^2; participant ID 255 = 12.7 kg/m^2
+Cut-offs were selected based off of criteria and the results indicated 6 participants as an outlier/implausible value (participant ID 58 = 14.5 kg/m^2; participant ID 65 = 41.4 kg/m^2; participant ID 131 = 13.6 kg/m^2; participant ID 162 = 14.9 kg/m^2; participant ID 233 = 12.5 kg/m^2; participant ID 255 = 12.7 kg/m^2
 
 ## 5.3 Implausible maternal fasting glucose values
 
