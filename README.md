@@ -3,6 +3,7 @@ Group project: Building an A-Z Reproducible Pipeline for Precision Nutrition Ana
 
 # Part 1: Exploring Missingness & Data Cleaning for Growth Dataset in R 
 
+## 1 Packages
 ```
 packages <- c("tidyverse", "naniar", "skimr", "ggplot2")
 for (pkg in packages) {
@@ -225,7 +226,7 @@ write_csv(clean_data, "clean_precision_growth_dataset_03.22.csv")
 
 # Part 2 Assessing Clustering Tendency
 
-## 1. Install and load required packages
+## 1 Install and load required packages
 
 ```
 packages <- c("NbClust", "factoextra", "ggplot2", "gridExtra", "cluster", 
@@ -239,7 +240,7 @@ for (pkg in packages) {
 }
 ```
 
-## 2. Reading Data
+## 2 Reading Data
 
 ```
 data_clean <- read_csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/clean_precision_growth_dataset_03.22_2variables.csv")
@@ -253,7 +254,7 @@ data_clean <- read_csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/clean_
 data_mBMI_glucose <- data_clean
 ```
 
-## 3. Scale the data
+## 2.2 Scale the data
 
 ```
 data_scaled <- scale(data_mBMI_glucose)
