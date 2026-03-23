@@ -280,7 +280,7 @@ optimal_k <- as.numeric(names(which.max(table(nbclust_result$Best.nc[1,]))))
 cat(sprintf("\nOptimal number of clusters: %d\n", optimal_k))
 ```
 
-# 3.2 PLOT 1: VOTING RESULTS
+## 3.2 PLOT 1: VOTING RESULTS
 
 ```
 votes <- table(nbclust_result$Best.nc[1,])
