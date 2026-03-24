@@ -52,7 +52,7 @@ vis_miss(data)
 
 Variables of interest: maternal_BMI = 0% missing; Maternal_education_index = 0% missing; Household_income_index = 0% missing; Fasting_glucose = 0% missing; WHO_zBMI_birth = 0%
 
-# Missingness combinations
+## 3.3 Missingness combinations
 
 ```
 gg_miss_upset(data)
