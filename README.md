@@ -47,8 +47,14 @@ print(missing_summary)
 
 ```
 vis_miss(data)
+```
+![Visual Inspection](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/d29d7cf9368d2547fac365b2090f21490f91ad53/Graphs/Visual%20Inspection_03.24.png)
+
+variables of interest: maternal_BMI = 0% missing; Maternal_education_index = 0% missing; Household_income_index = 0% missing; Fasting_glucose = 0% missing; WHO_zBMI_birth = 0%
 
 # Missingness combinations
+
+```
 gg_miss_upset(data)
 ```
 ![Missingness](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/68117ba717fc3bcad035e45062531f2866f1b524/Graphs/Missingness_03.22.png)
