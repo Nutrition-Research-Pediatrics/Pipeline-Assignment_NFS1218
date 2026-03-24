@@ -1,6 +1,8 @@
 # Pipeline-Assignment_NFS1218
 Group project: Building an A-Z Reproducible Pipeline for Precision Nutrition Analysis
 
+# OUTLINE:
+
 # Part 1: Exploring Missingness & Data Cleaning for Growth Dataset in R 
 
 ## 1 Packages
@@ -321,7 +323,7 @@ plot1 <- ggplot(vote_df, aes(x = k, y = Votes, fill = k == optimal_k)) +
   )
 ```
 
-# 3.3 PLOT 2: ELBOW METHOD
+## 3.3 PLOT 2: ELBOW METHOD
 
 ```
 wss <- sapply(1:8, function(k) {
