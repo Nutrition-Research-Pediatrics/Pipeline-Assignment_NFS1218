@@ -1,8 +1,10 @@
 # Pipeline-Assignment_NFS1218
 Group project: Building an A-Z Reproducible Pipeline for Precision Nutrition Analysis
 
-# OUTLINE:
+## OUTLINE:
 
+
+_______________________________________________________________________
 # Part 1: Exploring Missingness & Data Cleaning for Growth Dataset in R 
 
 ## 1 Packages
