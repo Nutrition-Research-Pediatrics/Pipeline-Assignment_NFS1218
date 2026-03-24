@@ -165,7 +165,7 @@ Cut-offs were selected based off of criteria and the results indicated 12 partic
 clean_data <- data
 ```
 
-# 6.1 Remove implausible gestational age
+## 6.1 Remove implausible gestational age
 
 ```
 if ("Gestational_age_weeks" %in% names(clean_data)) {
