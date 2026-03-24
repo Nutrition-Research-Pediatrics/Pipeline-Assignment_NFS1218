@@ -245,7 +245,7 @@ for (pkg in packages) {
 }
 ```
 
-## 2 Reading Data
+## 2 Reading data
 
 ```
 data_clean <- read_csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/clean_precision_growth_dataset_03.22_2variables.csv")
