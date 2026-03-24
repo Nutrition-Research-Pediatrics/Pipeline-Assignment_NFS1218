@@ -481,7 +481,7 @@ plot5 <- grid.arrange(
   )
 )
 ```
-![Comparing k](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/9dbe91a46e8ed47818e8d7e089d0e22364db6dbe/Graphs/Comparing%20k_03.22.png)
+![Comparing k](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/b5503c1cf569f0842e568ffe110a159caf8ed826/Graphs/Comparing%20k_03.23.png)
 Strong separation (non‑overlapping ellipses) between the three groups which supports k = 3 
 
 ## 3.7 PLOT 6: INDEX HEATMAP
