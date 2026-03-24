@@ -273,6 +273,7 @@ nbclust_result <- NbClust(data_scaled,
                           index ="all"
 )
 ```
+![NBClust](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/01792c5d873011bf12a12b807195da4c1450a7f8/Graphs/nclust_result_03.22.png)
 
 ## 3.1 Extract optimal k
 
@@ -309,8 +310,11 @@ plot1 <- ggplot(vote_df, aes(x = k, y = Votes, fill = k == optimal_k)) +
     panel.grid.major.y = element_line(color = "grey90", linewidth = 0.3),
     plot.margin = margin(20, 20, 20, 20)
   )
+```
+
 # 3.3 PLOT 2: ELBOW METHOD
 
+```
 wss <- sapply(1:8, function(k) {
   if (k == 1) {
     sum(scale(data_scaled, scale = FALSE)^2)
@@ -351,6 +355,7 @@ plot2 <- ggplot(elbow_df, aes(x = k, y = WSS)) +
   )
 plot2
 ```
+![Elbow](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/01792c5d873011bf12a12b807195da4c1450a7f8/Graphs/elbow_method_03.22.png)
 
 ## 3.4 PLOT 3: SILHOUETTE ANALYSIS
 
@@ -392,11 +397,14 @@ plot3 <- fviz_silhouette(sil, print.summary = FALSE) +
 ggsave("tutorial_plot3_silhouette.png", plot3, width = 11, height = 7, dpi = 300, bg = "white")
 ggsave("tutorial_plot3_silhouette.svg", plot3, width = 11, height = 7, bg = "white")
 plot3
+```
+![Silhouette](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/01792c5d873011bf12a12b807195da4c1450a7f8/Graphs/Silhouette%20Analysis_03.22.png)
+Silhouette Analysis: works with any distance metric, detects cluster separation,and cohesion 
 
-# Silhouette Analysis: works with any distance metric, detects cluster separation,and cohesion 
 
-# 3.5 PLOT 4: PCA CLUSTER VISUALIZATION
+## 3.5 PLOT 4: PCA CLUSTER VISUALIZATION
 
+```
 pca_result <- prcomp(data_scaled)
 pca_df <- data.frame(
   PC1 = pca_result$x[, 1],
@@ -431,9 +439,12 @@ plot4 <- ggplot(pca_df, aes(x = PC1, y = PC2, color = Cluster, shape = Cluster))
     plot.margin = margin(20, 20, 20, 20)
   )
 plot4
+```
+![PCA](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/9dbe91a46e8ed47818e8d7e089d0e22364db6dbe/Graphs/PCA_03.22.png)
 
-# 3.6 PLOT 5: COMPARISON OF MULTIPLE K VALUES
+## 3.6 PLOT 5: COMPARISON OF MULTIPLE K VALUES
 
+```
 k_values <- 2:6
 comparison_plots <- list()
 
@@ -469,11 +480,13 @@ plot5 <- grid.arrange(
     gp = grid::gpar(fontsize = 20, fontface = "bold")
   )
 )
+```
+![Comparing k](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/9dbe91a46e8ed47818e8d7e089d0e22364db6dbe/Graphs/Comparing%20k_03.22.png)
+Strong separation (non‑overlapping ellipses) between the three groups which supports k = 3 
 
-# Strong separation (non‑overlapping ellipses) between the three groups which supports k = 3 
+## 3.7 PLOT 6: INDEX HEATMAP
 
-# 3.7 PLOT 6: INDEX HEATMAP
-
+```
 # Create matrix showing which k each index voted for
 index_votes <- nbclust_result$Best.nc[1, ]
 index_votes <- index_votes[!is.na(index_votes)]
@@ -511,10 +524,12 @@ plot6 <- ggplot(index_matrix, aes(x = Optimal_k, y = reorder(Index, Index_num)))
   )
 
 plot6
+```
+![Heatmap](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/9dbe91a46e8ed47818e8d7e089d0e22364db6dbe/Graphs/heatmap_03.22.png)
 
-# 3.8 CREATE COMBINED FIGURE
+## 3.8 CREATE COMBINED FIGURE
 
-
+```
 combined <- grid.arrange(
   plot1, plot2, plot3, plot4,
   ncol = 2, nrow = 2,
@@ -524,8 +539,11 @@ combined <- grid.arrange(
     vjust = 1
   )
 )
+```
 
-# GENERATE SUMMARY REPORT
+GENERATE SUMMARY REPORT
+
+```
 
 sink("nbclust_summary.txt")
 
@@ -575,8 +593,9 @@ cat("=" %>% rep(80) %>% paste(collapse = ""), "\n")
 
 sink()
 ```
+![Combined](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/49785768df449d756497b8229a25d34c491337eb/Graphs/combined_03.22.png)
 
-## Define helper for pipe
+Define helper for pipe
 
 ```
 `%>%` <- function(x, f) f(x)
