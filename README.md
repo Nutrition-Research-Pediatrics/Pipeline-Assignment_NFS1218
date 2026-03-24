@@ -50,7 +50,7 @@ vis_miss(data)
 ```
 ![Visual Inspection](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/d29d7cf9368d2547fac365b2090f21490f91ad53/Graphs/Visual%20Inspection_03.24.png)
 
-variables of interest: maternal_BMI = 0% missing; Maternal_education_index = 0% missing; Household_income_index = 0% missing; Fasting_glucose = 0% missing; WHO_zBMI_birth = 0%
+Variables of interest: maternal_BMI = 0% missing; Maternal_education_index = 0% missing; Household_income_index = 0% missing; Fasting_glucose = 0% missing; WHO_zBMI_birth = 0%
 
 # Missingness combinations
 
