@@ -1,8 +1,10 @@
 # Pipeline-Assignment_NFS1218
 Group project: Building an A-Z Reproducible Pipeline for Precision Nutrition Analysis
 
-## OUTLINE:
+### OUTLINE:
+Objectives:
 
+Table of Content:
 
 _______________________________________________________________________
 # Part 1: Exploring Missingness & Data Cleaning for Growth Dataset in R 
@@ -610,4 +612,54 @@ sink()
 ```
 ![Combined](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/b9b702baa8b809703c560f5dc349bc1c22ed60ee/Graphs/03.25_Combined.png)
 
+# Part 3 Distance Computation
+
+## 1  Packages
+
+```
+if (! require(factoextra, quietly=TRUE)) {
+  install.packages(factoextra)
+  library(factoextra)
+}
+
+if (! require(hopkins, quietly=TRUE)) {
+  install.packages(hopkins)
+  library(hopkins)
+}
+```
+
+##  2  Computing distances
+
+```
+# Using euclidean metric
+dist.eucl <- dist(data_mBMI_glucose, method = "euclidean")
+
+# Using manhattan metric
+dist.manh <- dist(data_mBMI_glucose, method = "manhattan")
+
+# Other metrics "binary", "minkowski"
+
+# Let's visualize the distance matrices.
+raw_eucl_m<-fviz_dist(dist.eucl)
+raw_manh_m<-fviz_dist(dist.manh)
+```
+
+## 3  Data standarization 
+
+```
+# Let's repeat the experiment using standarized data this time. 
+
+df.scaled <- scale(data_mBMI_glucose) # Standardize the variables
+# Using euclidean metric
+
+dist.eucl <- dist(df.scaled, method = "euclidean")
+
+# Using manhattan metric
+dist.manh <- dist(df.scaled, method = "manhattan")
+
+# Let's visualize the distance matrices.
+std_eucl_m<-fviz_dist(dist.eucl)
+fviz_dist(dist.manh)
+```
+![Distance Computation](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/153d776fec944e0972c23e1a7128c9b72990835c/Graphs/03.25_distance.png)
 
