@@ -258,16 +258,18 @@ for (pkg in packages) {
 ## 2 Reading data
 
 ```
-data_clean <- read_csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/clean_precision_growth_dataset_03.22_2variables.csv")
+data_clean <- read_csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/clean_precision_growth_dataset_03.22.csv")
 ```
 
-This dataset contains the cleaned variables specific variables for our clustering analysis, in the dataset there is a total of 3 variables consisting of Participant ID, Maternal BMI, and Fasting Blood Glucose
+This dataset is the cleaned version that we downloaded after preprocessing
 
 ## 2.1 Renamed the dataset
 
 ```
-data_mBMI_glucose <- data_clean
+data_mBMI_glucose <- data_clean[, c("Maternal_BMI", "Fasting_glucose")]
 ```
+
+We renamed the dataset including only our variables of interest for clustering analysis: Maternal BMI, and Fasting Blood Glucose
 
 ## 2.2 Scale the data
 
@@ -286,7 +288,8 @@ nbclust_result <- NbClust(data_scaled,
                           index ="all"
 )
 ```
-![NBClust](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/01792c5d873011bf12a12b807195da4c1450a7f8/Graphs/nclust_result_03.22.png)
+![NBClust](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/5a364cf8fd174d37c066b548631527a563acd9da/Graphs/03.25_nbclust.png)
+According to the majority rule, the best number of clusters is  3.
 
 ## 3.1 Extract optimal k
 
@@ -324,6 +327,7 @@ plot1 <- ggplot(vote_df, aes(x = k, y = Votes, fill = k == optimal_k)) +
     plot.margin = margin(20, 20, 20, 20)
   )
 ```
+The highest votes appears when k=3 (7 votes) and k=4 (7 votes).
 
 ## 3.3 PLOT 2: ELBOW METHOD
 
@@ -368,7 +372,7 @@ plot2 <- ggplot(elbow_df, aes(x = k, y = WSS)) +
   )
 plot2
 ```
-![Elbow](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/01792c5d873011bf12a12b807195da4c1450a7f8/Graphs/elbow_method_03.22.png)
+![Elbow](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/a1ecc6e5d3caeb543fc5101808bc929b760f1325/Graphs/03.25_Elbow%20method.png)
 
 ## 3.4 PLOT 3: SILHOUETTE ANALYSIS
 
@@ -411,9 +415,7 @@ ggsave("tutorial_plot3_silhouette.png", plot3, width = 11, height = 7, dpi = 300
 ggsave("tutorial_plot3_silhouette.svg", plot3, width = 11, height = 7, bg = "white")
 plot3
 ```
-![Silhouette](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/01792c5d873011bf12a12b807195da4c1450a7f8/Graphs/Silhouette%20Analysis_03.22.png)
-Silhouette Analysis: works with any distance metric, detects cluster separation,and cohesion 
-
+![Silhouette](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/1f3577dfa81cd67bf4c3ea02a80f2158defdaff6/Graphs/03.25_Silhouette.png)
 
 ## 3.5 PLOT 4: PCA CLUSTER VISUALIZATION
 
@@ -453,7 +455,7 @@ plot4 <- ggplot(pca_df, aes(x = PC1, y = PC2, color = Cluster, shape = Cluster))
   )
 plot4
 ```
-![PCA](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/9dbe91a46e8ed47818e8d7e089d0e22364db6dbe/Graphs/PCA_03.22.png)
+![PCA](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/8cab09451e934aedda4d5359bb482f92bb604bda/Graphs/03.25_PCA.png)
 
 ## 3.6 PLOT 5: COMPARISON OF MULTIPLE K VALUES
 
@@ -494,7 +496,7 @@ plot5 <- grid.arrange(
   )
 )
 ```
-![Comparing k](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/b5503c1cf569f0842e568ffe110a159caf8ed826/Graphs/Comparing%20k_03.23.png)
+![Comparing k](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/453673a041f02d9f6eb9fdf19b2d22535e25a025/Graphs/03.25_Comparison%20of%20multiple%20k.png)
 Strong separation (non‑overlapping ellipses) between the three groups which supports k = 3 
 
 ## 3.7 PLOT 6: INDEX HEATMAP
@@ -538,7 +540,7 @@ plot6 <- ggplot(index_matrix, aes(x = Optimal_k, y = reorder(Index, Index_num)))
 
 plot6
 ```
-![Heatmap](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/9dbe91a46e8ed47818e8d7e089d0e22364db6dbe/Graphs/heatmap_03.22.png)
+![Heatmap](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/2a05c2a85283f5deba8bd6fc22e1f9644825ea93/Graphs/03.25_heatmap.png)
 
 ## 3.8 CREATE COMBINED FIGURE
 
@@ -606,12 +608,6 @@ cat("=" %>% rep(80) %>% paste(collapse = ""), "\n")
 
 sink()
 ```
-![Combined](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/49785768df449d756497b8229a25d34c491337eb/Graphs/combined_03.22.png)
-
-Define helper for pipe
-
-```
-`%>%` <- function(x, f) f(x)
-```
+![Combined](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/b9b702baa8b809703c560f5dc349bc1c22ed60ee/Graphs/03.25_Combined.png)
 
 
