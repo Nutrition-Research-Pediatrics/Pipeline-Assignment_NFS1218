@@ -721,3 +721,123 @@ fviz_dist(dist.manh)
 ![Distance Computation](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/153d776fec944e0972c23e1a7128c9b72990835c/Graphs/03.25_distance.png)
 
 The distance matrix shows variation in similarity between individuals based on maternal BMI and fasting glucose, and standardization ensured that both variables contributed equally to the clustering analysis. These results support the use of the clustering analysis. 
+
+# Part 4 Clustering
+
+## 1  Packages
+
+```
+if (!require(factoextra, quietly = TRUE)) {
+  install.packages(factoextra)
+  library(factoextra)
+}
+
+if (!require(clustertend, quietly = TRUE)) {
+  install.packages(clustertend)
+  library(clustertend)
+}
+
+if (!require(igraph, quietly = TRUE)) {
+  install.packages(igraph)
+  library(igraph)
+}
+
+if (!require(cluster, quietly = TRUE)) {
+  install.packages(cluster)
+  library(cluster)
+}
+
+
+if (!require(dendextend, quietly = TRUE)) {
+  install.packages(dendextend)
+  library(dendextend)
+}
+```
+## 2  Clustering with k-means
+
+```
+fviz_nbclust(data_scaled, kmeans, method = "wss") +
+  geom_vline(xintercept = 3, linetype = 2) #x-intercept from 4 to 6
+
+# Compute k-means with k = 3
+km.res <- kmeans(data_scaled, 3, nstart = 25)
+
+# Print the results
+print(km.res)
+
+# Compute the mean of each variables of each cluster
+
+aggregate(data_clean, by = list(cluster = km.res$cluster), mean)
+
+dd <- cbind(data_clean, cluster = km.res$cluster)
+head(dd)
+
+#visualize
+
+fviz_cluster(
+  km.res,
+  data = data_scaled,
+  palette = c("#FC4E07", "#ff69b4","#000000"),
+  ellipse.type = "euclid",
+  # Concentration ellipse
+  star.plot = TRUE,
+  # Add segments from centroids to items
+  repel = TRUE,
+  # Avoid label overplotting (slow)
+  ggtheme = theme_minimal()
+)
+```
+![k means clusterings](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/a9cf98eff3426c9a9106a16fff028754255f7ae7/Graphs/03.27_k%20means%20clusters.png)
+
+# Part 5 Cluster Validation
+
+## 1  Packages
+
+```
+if (! require(clValid, quietly=TRUE)) {
+  install.packages(clValid)
+  library(clValid)
+}
+
+if (! require(clustertend, quietly=TRUE)) {
+  install.packages(clustertend)
+  library(clustertend)
+}
+```
+## 2  Data preparation
+
+```
+data_clean_1 <- read.csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/clean_precision_growth_dataset_03.22_2variables.csv")
+
+# 1. Assign ID as rownames
+rownames(data_clean_1) <- data_clean_1$ID
+
+# 2. Then remove ID and fasting glucose column
+data_clean_1$ID <- NULL
+
+# 3. Scale
+df <- scale(data_clean_1)
+```
+
+## 3  Run clValid with multiple clustering algorithms
+
+```
+clmethods <- c("hierarchical", "kmeans", "pam")
+
+int1 <- clValid(df, 
+                nClust = 2:6, 
+                clMethods = clmethods, 
+                validation = "internal")
+optimalScores(int1)
+```
+
+# 4  Run clValid with one clustering algorithm but with different n 
+
+```
+int2 <- clValid(df, 
+                nClust = 2:6, 
+                clMethods = "kmeans", 
+                validation = "internal")
+optimalScores(int2)
+```
+
