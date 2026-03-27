@@ -1,11 +1,11 @@
 # Pipeline-Assignment_NFS1218
 Group project: Building an A-Z Reproducible Pipeline for Precision Nutrition Analysis
 
-### OUTLINE:
+## OUTLINE:
 
 This project developed a reproducible data analysis pipeline consisting of the following steps:
 
-Part 1: Data Cleaning and Missingness Exploration
+##**Part 1: Data Cleaning and Missingness Exploration**
 Data loading and structure inspection
 Missingness assessment using summary statistics and visualization
 Distribution assessment for key variables (maternal BMI, fasting glucose, zBMI at birth)
@@ -23,7 +23,7 @@ Biologically implausible thresholds used:
 
 After cleaning, the final analytical sample size was N = 281.
 
-Part 2: Clustering Analysis
+##**Part 2: Clustering Analysis**
 Clustering analysis was performed using maternal BMI and fasting glucose to assess clustering tendency and identify potential metabolic phenotypes.
 
 Methods used:
@@ -37,7 +37,7 @@ Index heatmap
 
 Results indicated that the optimal number of clusters was 3, suggesting the presence of three maternal metabolic profiles based on BMI and fasting glucose.
 
-Part 3: Distance Computation
+##**Part 3: Distance Computation**
 Distance matrices were computed using:
 Euclidean distance
 Manhattan distance
