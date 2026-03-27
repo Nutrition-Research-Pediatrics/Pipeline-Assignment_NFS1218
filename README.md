@@ -423,6 +423,8 @@ plot2
 ```
 ![Elbow](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/a1ecc6e5d3caeb543fc5101808bc929b760f1325/Graphs/03.25_Elbow%20method.png)
 
+Elbow at k=3 
+
 ## 3.4 PLOT 3: SILHOUETTE ANALYSIS
 
 ```
@@ -466,6 +468,8 @@ plot3
 ```
 ![Silhouette](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/1f3577dfa81cd67bf4c3ea02a80f2158defdaff6/Graphs/03.25_Silhouette.png)
 
+The average Silhouette width between the clusters is 0.363, which indicates a moderate clustering structure.
+
 ## 3.5 PLOT 4: PCA CLUSTER VISUALIZATION
 
 ```
@@ -505,6 +509,8 @@ plot4 <- ggplot(pca_df, aes(x = PC1, y = PC2, color = Cluster, shape = Cluster))
 plot4
 ```
 ![PCA](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/8cab09451e934aedda4d5359bb482f92bb604bda/Graphs/03.25_PCA.png)
+
+The purpose of PCA is to show the final k-means clustered into 2-D. PCA shows 3 clear clusters, with minimal overlap between them. 
 
 ## 3.6 PLOT 5: COMPARISON OF MULTIPLE K VALUES
 
@@ -546,6 +552,7 @@ plot5 <- grid.arrange(
 )
 ```
 ![Comparing k](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/453673a041f02d9f6eb9fdf19b2d22535e25a025/Graphs/03.25_Comparison%20of%20multiple%20k.png)
+
 Strong separation (non‑overlapping ellipses) between the three groups which supports k = 3 
 
 ## 3.7 PLOT 6: INDEX HEATMAP
@@ -591,6 +598,7 @@ plot6
 ```
 ![Heatmap](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/2a05c2a85283f5deba8bd6fc22e1f9644825ea93/Graphs/03.25_heatmap.png)
 
+The heatmap shows that the number of clusters selected (3 clusters) was a favorable number to select. 
 ## 3.8 CREATE COMBINED FIGURE
 
 ```
@@ -659,6 +667,8 @@ sink()
 ```
 ![Combined](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/b9b702baa8b809703c560f5dc349bc1c22ed60ee/Graphs/03.25_Combined.png)
 
+A figure showing the summary of all plots conducted in k-means analysis with the overall goal to help us identify the best number of clusters. 
+
 # Part 3 Distance Computation
 
 ## 1  Packages
@@ -710,3 +720,4 @@ fviz_dist(dist.manh)
 ```
 ![Distance Computation](https://github.com/Nutrition-Research-Pediatrics/Pipeline-Assignment_NFS1218/blob/153d776fec944e0972c23e1a7128c9b72990835c/Graphs/03.25_distance.png)
 
+The distance matrix shows variation in similarity between individuals based on maternal BMI and fasting glucose, and standardization ensured that both variables contributed equally to the clustering analysis. These results support the use of the clustering analysis. 
