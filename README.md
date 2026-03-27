@@ -2,10 +2,57 @@
 Group project: Building an A-Z Reproducible Pipeline for Precision Nutrition Analysis
 
 ### OUTLINE:
-Objectives:
 
-Table of Content:
+This project developed a reproducible data analysis pipeline consisting of the following steps:
 
+Part 1: Data Cleaning and Missingness Exploration
+Data loading and structure inspection
+Missingness assessment using summary statistics and visualization
+Distribution assessment for key variables (maternal BMI, fasting glucose, zBMI at birth)
+Identification of biologically implausible values
+Data cleaning based on predefined plausibility thresholds
+Creation of a cleaned dataset for analysis
+
+Biologically implausible thresholds used:
+| Variable        | Implausible Values |
+| --------------- | ------------------ |
+| Gestational age | <22 or >44 weeks   |
+| Maternal BMI    | <15 or >40 kg/m²   |
+| Fasting glucose | <2.5 or >12 mmol/L |
+| Birth zBMI      | < −5 or > +5       |
+
+After cleaning, the final analytical sample size was N = 281.
+
+Part 2: Clustering Analysis
+Clustering analysis was performed using maternal BMI and fasting glucose to assess clustering tendency and identify potential metabolic phenotypes.
+
+Methods used:
+Data standardization
+NbClust to determine optimal number of clusters
+Elbow method
+Silhouette analysis
+PCA cluster visualization
+Cluster comparison plots
+Index heatmap
+
+Results indicated that the optimal number of clusters was 3, suggesting the presence of three maternal metabolic profiles based on BMI and fasting glucose.
+
+Part 3: Distance Computation
+Distance matrices were computed using:
+Euclidean distance
+Manhattan distance
+Standardized and non-standardized data
+
+This step evaluated similarity between observations and supported clustering analysis.
+
+Statistical Analysis: 
+The association between maternal BMI, maternal fasting glucose, and offspring zBMI at birth will be assessed using multivariable linear regression, adjusting for:
+Infant sex
+Gestational age
+Maternal education
+Household income index
+
+Regression coefficients (β), 95% confidence intervals, and p-values will be reported.
 _______________________________________________________________________
 # Part 1: Exploring Missingness & Data Cleaning for Growth Dataset in R 
 
