@@ -831,7 +831,7 @@ int1 <- clValid(df,
 optimalScores(int1)
 ```
 
-# 4  Run clValid with one clustering algorithm but with different n 
+## 4  Run clValid with one clustering algorithm but with different n 
 
 ```
 int2 <- clValid(df, 
