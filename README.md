@@ -812,7 +812,7 @@ data_clean_1 <- read.csv("~/Desktop/NFS 2026/NFS1218/Data Analysis Pipeline/clea
 # 1. Assign ID as rownames
 rownames(data_clean_1) <- data_clean_1$ID
 
-# 2. Then remove ID and fasting glucose column
+# 2. Then remove ID column
 data_clean_1$ID <- NULL
 
 # 3. Scale
@@ -830,6 +830,7 @@ int1 <- clValid(df,
                 validation = "internal")
 optimalScores(int1)
 ```
+Based off of this output it indicated that hierarchical clustering is the the most favourable clustering analysis method, although based off of our dataset we selected k-means clustering analysis method. From the results obtained it indicated that the best number of clusters is 2, but for our analysis using k-means and interpretation of the clusters we deemed that 3 was the best number of clusters. 
 
 ## 4  Run clValid with one clustering algorithm but with different n 
 
@@ -840,4 +841,5 @@ int2 <- clValid(df,
                 validation = "internal")
 optimalScores(int2)
 ```
+These results provide us with validation for the best number of clusters to identify when using the k-means clustering technique. Based off the results obtained it indicated that the best number of clusters ranged from 2-6 clusters. Therefore, this validates our identification of 3 clusters. 
 
